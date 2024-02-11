@@ -64,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                 title: Text('Enrollment Info'),
                 content: user.userType == 'Tutor'
                     ? Text(
-                    "Congratulations! Your  $courseName course has $enrollmentCount booked demo sessions.")
+                    "Congratulations! Your $courseName course has $enrollmentCount booked demo sessions.")
                     : Text(
                     "This particular course has $enrollmentCount booked demo sessions."),
                 actions: <Widget>[
@@ -90,27 +90,18 @@ class MyHomePage extends StatelessWidget {
               ),
             );
           }
-        }else{
-          showDialog(
-            context: context,
-            builder: (BuildContext context) => AlertDialog(
-              title: Text('Error'),
-              content: Text('As a student, you cannot view enrollment info. Only tutors can view enrollment info.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text('OK'),
-                ),
-              ],
-            ),
-          );
         }
       },
-      style: TextButton.styleFrom(
-        backgroundColor:  Color(0xff7F9A5B),
+      style: user.userType == 'Student'
+          ? ButtonStyle() // Empty ButtonStyle to hide the button
+          : TextButton.styleFrom(
+        backgroundColor: Color(0xff7F9A5B),
         foregroundColor: Colors.white,
       ),
-      child: const Text("Show Enrollment Info", style: TextStyle(fontFamily: 'Salsa')),
+      child: user.userType == 'Student'
+          ? Container() // Empty container to hide the child text
+          : const Text("Show Enrollment Info", style: TextStyle(fontFamily: 'Salsa')),
+
     );
   }
 
@@ -157,9 +148,9 @@ class MyHomePage extends StatelessWidget {
                 height: 20,
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('images/logo4.png'),
+                backgroundImage: AssetImage('images/logo_new.png'),
                 backgroundColor: Colors.transparent,
-                radius: 40,
+                radius: 55,
               ),
               const SizedBox(
                 height: 10,
@@ -179,34 +170,25 @@ class MyHomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   buildEnrollmentInfoButton(context),
-                  TextButton(
-                    onPressed: () {
-                      // Check if the user is an attendee
-                      if (user.userType == 'Student') {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: Text('Error'),
-                            content: Text('As a student, you cannot add courses. Only tutors can add courses.'),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('OK'),
-                              ),
-                            ],
+
+                      if (user.userType == 'Tutor') // Show this button only if userType is 'Tutor'
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyForm(user: user)));
+                          },
+                          style: TextButton.styleFrom(
+                            backgroundColor: Color(0xff7F9A5B),
+                            foregroundColor: Colors.white,
                           ),
-                        );
-                      } else {
-                        // Allow tutor to add courses
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => MyForm(user: user)));
-                      }
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: Color(0xff7F9A5B),
-                      foregroundColor: Colors.white,
-                    ),
-                    child: const Text("Add courses", style: TextStyle(fontFamily: 'Salsa')),
-                  ),
+                          child: const Text("Add courses", style: TextStyle(fontFamily: 'Salsa')),
+
+                        ),
+                ],
+              ),
+
+              Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
                   TextButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => CourseListPage(user: user)));
@@ -215,102 +197,55 @@ class MyHomePage extends StatelessWidget {
                         backgroundColor: Color(0xff7F9A5B), foregroundColor: Colors.white),
                     child: const Text("Find Tutor",style:TextStyle(fontFamily: 'Salsa',)),
                   ),
-                ],
-              ),
-
-              Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-              TextButton(
-                onPressed: () {
-                  if (user.userType == 'Student') {
+                  if (user.userType == 'Student')
+                    TextButton(
+                     onPressed: () {
                     // Allow only students to view booked sessions
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => StudentEnrolledCourses(
-                              user: user)),
-                    );
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: Text('Error'),
-                        content: Text(
-                            'Only students can view their booked demo sessions. Tutors cannot view booked demo sessions.'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text('OK'),
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => StudentEnrolledCourses(
+                                  user: user)),
+                        );
+                    },
+                    style: TextButton.styleFrom(backgroundColor: Color(0xff7F9A5B),
+                    foregroundColor: Colors.white),
+                    child: const Text("View Booked Sessions",style: TextStyle(fontFamily: 'Salsa',)),
+                    ),
+
+                  if (user.userType == 'Tutor')
+                    TextButton(
+                      onPressed: () {
+                        // Allow only tutors to view their courses
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                        builder: (context) => TutorCoursesPage(user: user)),);
+                      },
+                      style: TextButton.styleFrom(backgroundColor: Color(0xff7F9A5B),
+                          foregroundColor: Colors.white),
+                      child: const Text("View Their Courses",style: TextStyle(fontFamily: 'Salsa')),
+                    ),
+
+                  TextButton(
+                      onPressed: () {
+                        // Open email app to contact support
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ChatBotApp(user: user)),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                          backgroundColor: Color(0xff7F9A5B),
+                          foregroundColor: Colors.white),
+                      child: Row(
+                        children: [
+                          Icon(Icons.help,color: Colors.white,size:10,),
+                          //SizedBox(height: 0.5), // Adjust the spacing between the icon and text
+                          Text(
+                            'Need Help',
+                            style: TextStyle(color: Colors.white, fontFamily: 'Salsa'),
                           ),
                         ],
                       ),
-                    );
-                  }
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: Color(0xff7F9A5B),
-                    foregroundColor: Colors.white),
-                child: const Text("View Booked Sessions",
-                    style: TextStyle(fontFamily: 'Salsa')),
-              ),
-
-              TextButton(
-                onPressed: () {
-                  if (user.userType == 'Tutor') {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TutorCoursesPage(
-                              user: user)),
-                    );
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: Text('Error'),
-                        content: Text(
-                            'Only tutors can view their courses.'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: Color(0xff7F9A5B),
-                    foregroundColor: Colors.white),
-                child: const Text("View Their Courses",
-                    style: TextStyle(fontFamily: 'Salsa')),
-              ),
-
-                FloatingActionButton(
-                  onPressed: () {
-                    // Open email app to contact support
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChatBotApp(user: user)),
-                    );
-                  },
-                  backgroundColor: Color(0xff7F9A5B),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.help,color: Colors.white,size: 15,),
-                      SizedBox(height: 2), // Adjust the spacing between the icon and text
-                      Text(
-                        'Need Help',
-                        style: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Salsa'), // Adjust the font size as needed
-                      ),
-                    ],
-                  ),
-                  // child: Icon(Icons.help),
                 ),
-
             ],
           ),
           ],
