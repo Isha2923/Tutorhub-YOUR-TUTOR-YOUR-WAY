@@ -36,11 +36,14 @@ View Profile: Users can view their profiles with details such as qualifications,
 
 #### For Tutors - 
 1.Enrollment Info: Tutors can see information about the number of students who have booked their demo sessions.
+
 2.View Their Courses: Tutors can view their provided courses on separate page .
+
 3.Add Courses: Tutors can add more courses by filling the required details .
 
 #### For Students - 
 1.Find Tutor: Students can access the "Find Tutor" feature to discover available tutors.
+
 2.View Booked Sessions: Students can view their booked demo sessions on separate page .
 
 ### 5. Find Tutor Page:
