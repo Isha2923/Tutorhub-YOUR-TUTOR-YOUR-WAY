@@ -26,7 +26,9 @@ There is a need for a comprehensive Tutor Finder app that simplifies the process
 ### 1.User Authentication:
 Signup/Sign In: Users can create accounts or log in using secure authentication methods and verification mail is sent to new users once they create account in the app.
 
+<p align="center">
 <img width="208" alt="Screenshot 2024-02-05 142344" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/8d7ca880-7dbb-4536-87bf-df7a78cb386f">
+</p>
 
 ####
 
