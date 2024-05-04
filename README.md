@@ -41,6 +41,8 @@ View Profile: Users can view their profiles with details such as qualifications,
 
 3.Add Courses: Tutors can add more courses by filling the required details .
 
+<img width="204" alt="Screenshot 2024-02-10 005502" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/1ece6ea5-6e1c-4d6a-b2b3-e031cb618dda">
+
 #### For Students - 
 1.Find Tutor: Students can access the "Find Tutor" feature to discover available tutors.
 
