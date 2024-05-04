@@ -49,12 +49,10 @@ Student and Tutor Profiles: Users can choose between two profiles - student and 
 <img width="208" alt="Screenshot 2024-03-30 193223" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/66484306-20c0-4a92-91e8-064f5430e8fd">
 </p>
 
-####
 <p align="center">
 <img width="208" alt="Screenshot 2024-02-05 011158" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/0f2d2c06-989b-4ae7-a52e-7819a2665960">
 </p>
 
-####
 <p align="center">
 <img width="208" alt="Screenshot 2024-03-30 191515" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/1b017e81-dd37-4a07-8c0d-7727e048f651">
 </p>
