@@ -28,7 +28,7 @@ Signup/Sign In: Users can create accounts or log in using secure authentication 
 
 <img width="208" alt="Screenshot 2024-02-05 142344" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/8d7ca880-7dbb-4536-87bf-df7a78cb386f">
 
-![Screenshot 2024-03-30 192942](https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/4a8f108b-42e5-4e06-acbe-0edb9c611393)
+<img width="208" alt="Screenshot 2024-03-30 192942" src="https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/4a8f108b-42e5-4e06-acbe-0edb9c611393">
 
 ![Screenshot 2024-03-30 191332](https://github.com/Isha2923/Tutorhub-YOUR-TUTOR-YOUR-WAY/assets/122515895/b4cf6121-2121-480a-99e8-373d79979f3e)
 
