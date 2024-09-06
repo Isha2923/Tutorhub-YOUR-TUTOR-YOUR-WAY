@@ -1,4 +1,4 @@
-# Tutorhub-Your Tutor, Your way!
+# Tutorhub-Your Tutor, Your way! :mortar_board::dart:
 
 A new Flutter project.
 
